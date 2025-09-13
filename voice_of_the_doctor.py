@@ -36,7 +36,7 @@ def text_to_speech_with_gtts_with_VoiceOutput(input_text, output_filepath):
         print(f"An error occurred while trying to play the audio: {e}")
 
 if __name__ == "__main__":
-    input_text = "Hello. How are you?"
-    output_filepath = "data\\doctor_voice\\test1.wav"
+    input_text = "Hello. How are you? target offers free shipping on thousands of items."
+    output_filepath = "data\\doctor_voice\\test.mp3"
     #text_to_speech_with_gtts(input_text, output_filepath)
     text_to_speech_with_gtts_with_VoiceOutput(input_text, output_filepath)

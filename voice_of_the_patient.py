@@ -40,19 +40,22 @@ def record_audio(file_path, timeout=20, phrase_time_limit=None):
         logging.error(f"An error occurred: {e}")
 
 #Step2 - Speech to text model setup
-def speech_to_text(file_path):
+def speech_to_text_with_groq(voice_file_path, model):
     client = Groq()
-    with open(file_path, "rb") as audio_file:
+    #print(f"patient voice file path: {voice_file_path}")
+    with open(voice_file_path, "rb") as audio_file:
         transcript = client.audio.transcriptions.create(
             file=audio_file,
-            model="whisper-large-v3-turbo",
+            model=model,
             response_format="text", # Or "verbose_json" for more details
             language="en" # Optional: specify language
         )
-    print(transcript)
+    #print(transcript)
+    return transcript
 
 if __name__ == "__main__":
     load_dotenv()
     voice_file_path = "data\patient_voice\\test.mp3"
+    model = "whisper-large-v3-turbo"
     record_audio(file_path=voice_file_path)
-    speech_to_text(file_path=voice_file_path)
+    speech_to_text_with_groq(voice_file_path=voice_file_path, model=model)

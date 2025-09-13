@@ -9,3 +9,5 @@ PyAudio
   #after installing ffmpeg. setup env variable
 
 gtts  #google text to speech
+
+gradio
